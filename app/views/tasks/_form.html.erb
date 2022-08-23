@@ -1,0 +1,19 @@
+<%= form_with model: @task do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :details %>
+    <%= f.text_area :details %>
+  </div>
+    <div>
+    <%# .new_record?() returns true if this object hasn't been saved yet – that is, a record for the object doesn't exist in the database yet; otherwise, returns false. %>
+    <%# if record exists, show checkbox %>
+    <% if (@task.new_record?()) == false %>
+      <%= f.check_box :completed %>
+        <%= f.label :completed, "Mark if task completed" %>
+    <% end %>
+  </div>
+  <%= f.submit %>
+<% end %>
